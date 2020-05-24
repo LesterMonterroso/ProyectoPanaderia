@@ -1,0 +1,43 @@
+
+              FACTURA DE VENTA
+
+
+             Panaderia dulce Abuelita
+                                     NIT 100464
+         DE: Cuilapa, Santa Rosa
+
+                                     FACTURA DE
+        Barrio el Centro Cuilapa
+
+                                       Nº 0000000
+              ILO - MOQU
+
+
+        Señor(a): xdfdfdfeee       Cod. Cliente:
+
+        RUC: eeeeeee               DNI: eeeeeeee
+
+        Direccion:                 Fecha de Emis
+
+      COD. P DESCRIPCION  PRECIO UNICANTI   TOTAL
+      null  null          null      null  null
+                                          Subtotal:
+                                          IGV: 14114
+                                          Total a Pa
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReporteVentas" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6e7d2fb7-c113-4250-86e1-e33915fd13fc">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<queryString>
+		<![CDATA[SELECT
+     factura.`num_fac` AS factura_num_fac,
+     factura.`cod_cli` AS factura_cod_cli,
+     factura.`Nit_cli` AS factura_Nit_cli,
+     factura.`subtotal` AS factura_subtotal,
+     factura.`IVA` AS factura_IVA,
+     factura.`total` AS factura_total,
+     factura.`fec_fac` AS factura_fec_fac,
+     detallefactura.`des_pro` AS detallefactura_des_pro,
+     detallefactura.`cant_pro` AS detallefactura_cant_pro
+FROM
+     `factura` factura INNER JOIN `detallefactura` detallefactura ON factura.`num_fac` = detallefactura.`num_fac`]]>
+	</queryString>
+	<field name="factura_num_fac" class="java.lang.String"/>
+	<field name="factura_cod_cli" class="java.lang.String"/>
+	<field name="factura_Nit_cli" class="java.lang.String"/>
+	<field name="factura_subtotal" class="java.lang.String"/>
+	<field name="factura_IVA" class="java.lang.String"/>
+	<field name="factura_total" class="java.lang.String"/>
+	<field name="factura_fec_fac" class="java.lang.String"/>
+	<field name="detallefactura_des_pro" class="java.lang.String"/>
+	<field name="detallefactura_cant_pro" class="java.lang.String"/>
+	<group name="Group1">
+		<groupExpression><![CDATA[(int)($V{REPORT_COUNT}/15)]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Group2">
+		<groupExpression><![CDATA[(int)($V{REPORT_COUNT}/5)]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="103" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="721" height="66" backcolor="#000000" uuid="972e3b3f-eac4-4965-98de-7ab8311fcfb4"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="580" height="66" uuid="d3bbf7a2-8554-484d-b6b0-a661dda1978e"/>
+					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+					<textElement verticalAlignment="Bottom">
+						<font isBold="false"/>
+					</textElement>
+					<text><![CDATA[Panaderia la Dulce Abuelita]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="70" width="721" height="32" forecolor="#000000" backcolor="#CC0000" uuid="dffde7a7-74ba-42c1-9d1c-150cb6549377"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="553" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="234c576c-1e39-4165-95a8-642d9685cf10"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="318" y="1" width="114" height="31" forecolor="#FFFF99" uuid="30eb60d9-a944-435f-bc62-8a38eb57ea0b"/>
+					<box>
+						<pen lineColor="#FFFF99"/>
+						<topPen lineColor="#FFFF99"/>
+						<leftPen lineColor="#FFFF99"/>
+						<bottomPen lineColor="#FFFF99"/>
+						<rightPen lineColor="#FFFF99"/>
+					</box>
+					<textElement>
+						<font size="16" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Ventas]]></text>
+				</staticText>
+			</frame>
+			<image>
+				<reportElement x="590" y="0" width="131" height="82" uuid="4132150a-e8e6-405a-bcdf-174aa1e3365c"/>
+				<imageExpression><![CDATA["C:\\Users\\monte\\Documents\\SistemaAbuelita\\SISTEMA2\\tienda\\src\\Imagenes\\Abuelita.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement x="2" y="4" width="100" height="20" uuid="fa7126ed-2659-4ad0-b730-62d4dc41fb37"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No. Factura]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="102" y="4" width="100" height="20" uuid="3e2f6b23-043c-4dfc-a0da-a75ed04c7aaf"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codigo Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="202" y="4" width="100" height="20" uuid="f9242b92-24d5-40bf-bb9e-129cf7c4f76a"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nit Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="302" y="4" width="100" height="20" uuid="a026a19b-3a4e-4731-8a37-01e25c7337b3"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Detalle Factura]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="4" width="100" height="20" uuid="ee324a60-d179-4ec2-929e-de36035bedc6"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="500" y="4" width="100" height="20" uuid="9c24229f-d722-40fa-b987-b740cac12f4c"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Subtotal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="600" y="4" width="100" height="20" uuid="ee4f0841-1f1c-477f-b0cc-77b80fcd8c93"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IVA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="697" y="4" width="100" height="20" uuid="b95b05bf-eb14-442c-a5a8-505f485162cb"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="2" y="0" width="100" height="20" uuid="8dd40348-95e0-4a69-8b19-68f6d0a17027"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{factura_num_fac}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="102" y="0" width="100" height="20" uuid="e90d70b8-1924-43b9-992a-f48cd7508e15"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{factura_cod_cli}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="202" y="0" width="100" height="20" uuid="b235b5bb-a94c-44ae-ad58-664af31d4937"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{factura_Nit_cli}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="302" y="1" width="100" height="20" uuid="38e4c3ff-ae60-4504-856c-784819f7e4a4"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{detallefactura_des_pro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="401" y="0" width="100" height="20" uuid="5bc80d3d-e178-4859-85d0-a1cee010ae7b"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{factura_fec_fac}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="500" y="0" width="100" height="20" uuid="469a1551-751c-4e13-9211-212e13844b5f"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{factura_subtotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="598" y="2" width="100" height="20" uuid="01a4e726-edcf-44ad-9633-32c13076dc92"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{factura_IVA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="698" y="2" width="100" height="20" uuid="28c17a4f-ed3a-42d2-9185-3b16990560e1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{factura_total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="83419466-9265-4668-bef2-a52e193a29b0"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="25" forecolor="#D0B48E" backcolor="#000000" uuid="f1d74f3c-9241-4a6c-b694-dbf448583061"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="757" y="3" width="40" height="20" forecolor="#FFFFFF" uuid="5be66ae5-b4b1-4103-8a9b-a7afc3b2d391"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="677" y="3" width="80" height="20" forecolor="#FFFFFF" uuid="132d0fb8-32c3-44f7-a7f5-ce8a54e321ad"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF" uuid="fec76fd2-fe95-49ba-b34e-9710927d2eeb"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
